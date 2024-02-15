@@ -1,5 +1,6 @@
 const containerElement = document.querySelector('#container');
 
+
 const posts = [
     {
         "id": 1,
@@ -59,13 +60,14 @@ const posts = [
 ];
 
 posts.forEach(calogero => {
+    
     containerElement.innerHTML +=
     `
     <div class="post">
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="${calogero.author.image}" alt="Phil Mangione">                    
+                    <img class="profile-pic" src="${calogero.author.image}" alt="Phil Mangione">                   
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${calogero.author.name}</div>
@@ -80,22 +82,51 @@ posts.forEach(calogero => {
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button  js-like-button" data-postid="${calogero.id}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">${calogero.likes}</b> persone
+                    Piace a <b id="like-counter-${calogero.id}" class="js-likes-counter">${calogero.likes}</b> persone
                 </div>
             </div> 
         </div>            
     </div>
     `
-
-
+    
 })
 
-    
 
+
+const likesButtonElement = document.querySelectorAll('.like-button');
+
+likesButtonElement.forEach(function(bottone) {
+    
+    bottone.addEventListener("click", () => {
+        const postId = bottone.dataset.postid; 
+
+        let likesNumberElement = document.querySelector(`#like-counter-${postId}`);
+        const readi = bottone.classList.contains('like-button--liked')
+
+        console.log(likesNumberElement.innerText);
+
+        if (readi) {
+
+            bottone.classList.remove('like-button--liked');
+
+            likesNumberElement.innerText --;
+
+        } else {
+
+            bottone.classList.add('like-button--liked');
+
+            likesNumberElement.innerText ++;
+            
+
+        }
+
+    
+    })
+})
 
