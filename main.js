@@ -55,3 +55,35 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+for (let i = 0; i < posts.length; i++) {
+    console.log(images[i])
+
+    
+    let text = "";
+
+    let smallimg = "";
+
+    let bigimg = "";
+
+    for (let key in(images[i])) {
+
+        console.log(`${key}: ${images[i][key]}`)
+
+        smallimg += `<img class="img-fluid w-100 h-100  object-fit-cover" src="${images[i][key]}" alt="#">`;
+
+        bigimg += `<img class="img-fluid object-fit-cover w-100 photo" src="${images[i][key]}" alt="#">`;
+        
+        text += `<p>${images[i][key]}<br></p>`;
+        
+        // if (key == 'image') {
+            
+            
+        // } else {
+            
+        // }
+        
+    }
+
+}
+
