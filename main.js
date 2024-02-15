@@ -82,7 +82,7 @@ posts.forEach((calogero, index )=> {
         <div class="post__image">
             <img src="${calogero.media}" alt="">
         </div>
-        <div class="post__footer">
+        <div class="post__footer"> 
             <div class="likes js-likes">
                 <div class="likes__cta">
                     <a class="like-button  js-like-button" data-postid="${calogero.id}">
