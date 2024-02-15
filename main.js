@@ -59,7 +59,10 @@ const posts = [
     }
 ];
 
-posts.forEach(calogero => {
+posts.forEach((calogero, index )=> {
+
+    let italianDate = calogero.created.split('-').reverse().join('-')
+
     
     containerElement.innerHTML +=
     `
@@ -71,7 +74,7 @@ posts.forEach(calogero => {
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${calogero.author.name}</div>
-                    <div class="post-meta__time">${calogero.created}</div>
+                    <div class="post-meta__time">${italianDate}</div>
                 </div>                    
             </div>
         </div>
@@ -94,6 +97,18 @@ posts.forEach(calogero => {
         </div>            
     </div>
     `
+
+    const postMetaElement = document.querySelectorAll('.post-meta__icon');
+
+    if (calogero.author.image == null) {
+        postMetaElement[index].removeChild;
+        postMetaElement[index].innerHTML = 
+        `
+        <div class="profile-pic-default">
+            <span>LF</span>
+        </div>
+        `
+    }
     
 })
 
